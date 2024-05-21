@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tradutor Insper</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="/static/css/styles.css">
     <script src="https://unpkg.com/htmx.org@1.6.1"></script>
 </head>
 <body>
     <div class="container">
-    <img src="{{url_for('static', filename='img/logo.png')}}" alt="Logo Insper" class="logo">
+    <img src="/static/img/logo.png" alt="Logo Insper" class="logo">
     <h2 class="titulo-principal">Tradutor Insper</h2>
     </div>
     <p class="texto-cabecalho">Seja bem-vindo ao tradutor interno do Insper. Aqui, você poderá traduzir os seus textos de acordo com o glossário da área Internacional.</p>
@@ -26,7 +26,7 @@
             <h2 class="titulo-secundario">Texto traduzido</h2>
             <div class="texto-traduzido" id="traduzindo" contenteditable="false">
                 <img class="htmx-indicator blinking" id="processando"
-                    src="{{url_for('static', filename='img/robo_esperando.webp')}}" style="max-width: 80;" />
+                src="/static/img/robo_esperando.webp" style="max-width: 80;" />
             </div>
         </div>
     </div>
