@@ -24,7 +24,7 @@ function saveTranslation() {
 
 function updateHistorico() {
     const historicoContainer = document.getElementById("historico");
-    historicoContainer.innerHTML = ""; // Limpa o conteúdo anterior.
+    historicoContainer.innerHTML = ""; // Limpa o conteúdo anterior
 
     historico.forEach((traducao, index) => {
         const traducaoElement = document.createElement("div");
@@ -36,15 +36,15 @@ function updateHistorico() {
 }
 
 function showFullTranslation(index) {
-    const modal = document.getElementById("modal");
-    const modalText = document.getElementById("modal-text");
-    modalText.innerText = historico[index];
-    modal.style.display = "block";
+    const box = document.getElementById("full-translation-box");
+    const boxText = document.getElementById("full-translation-text");
+    boxText.innerText = historico[index];
+    box.style.display = "block";
 }
 
-function closeModal() {
-    const modal = document.getElementById("modal");
-    modal.style.display = "none";
+function closeFullTranslation() {
+    const box = document.getElementById("full-translation-box");
+    box.style.display = "none";
 }
 
 function toggleHistorico(event) {
