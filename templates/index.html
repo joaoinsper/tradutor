@@ -23,7 +23,7 @@
             <br>
             <div class="button-container">
                 <button class="button" hx-post="{{url_for('tradutor')}}" hx-target="#traduzindo" hx-swap="innerHTML"
-                        hx-indicator="#processando" hx-include="#texto_a_traduzir">Traduzir</button>
+                        hx-indicator="#processando" hx-include="#texto_a_traduzir" hx-trigger="click" hx-on="htmx:afterRequest:saveTranslation">Traduzir</button>
             </div>
             <div id="processando" style="display: none;">Traduzindo...</div>
         </div>
