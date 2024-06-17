@@ -24,7 +24,7 @@ function saveTranslation() {
 
 function updateHistorico() {
     const historicoContainer = document.getElementById("historico");
-    historicoContainer.innerHTML = ""; // Limpa o conteúdo anterior
+    historicoContainer.innerHTML = ""; // Limpa o conteúdo anterior.
 
     historico.forEach((traducao, index) => {
         const traducaoElement = document.createElement("div");
