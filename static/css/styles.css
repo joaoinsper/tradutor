@@ -1,5 +1,3 @@
-/* styles.css */
-
 body {
   overflow: auto;
 }
@@ -158,7 +156,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 5px;
 }
   
 .htmx-indicator{
@@ -183,32 +181,4 @@ textarea {
   
 .blinking {
     animation: blinker 1s linear infinite;
-}
-
-/* Estilos para a box de tradução completa */
-.full-translation-box {
-  display: none; /* Escondido por padrão */
-  position: relative; /* Relativo ao contêiner */
-  background-color: #fff; /* Fundo branco */
-  border: 1px solid #888;
-  width: 80%; /* Largura */
-  max-width: 600px; /* Largura máxima */
-  padding: 20px;
-  margin: 20px auto; /* Centraliza a box */
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.full-translation-box .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.full-translation-box .close:hover,
-.full-translation-box .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
 }
