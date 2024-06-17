@@ -36,7 +36,15 @@ function updateHistorico() {
 }
 
 function showFullTranslation(index) {
-    alert(historico[index]);
+    const modal = document.getElementById("modal");
+    const modalText = document.getElementById("modal-text");
+    modalText.innerText = historico[index];
+    modal.style.display = "block";
+}
+
+function closeModal() {
+    const modal = document.getElementById("modal");
+    modal.style.display = "none";
 }
 
 function toggleHistorico(event) {
