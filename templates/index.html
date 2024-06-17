@@ -23,13 +23,14 @@
             <br>
             <div class="button-container">
                 <button class="button" hx-post="{{url_for('tradutor')}}" hx-target="#traduzindo" hx-swap="innerHTML"
-                        hx-indicator="#processando" hx-include="#texto_a_traduzir" hx-trigger="click" hx-on="htmx:afterRequest:saveTranslation">Traduzir</button>
+                        hx-indicator="#processando" hx-include="#texto_a_traduzir">Traduzir</button>
             </div>
             <div id="processando" style="display: none;">Traduzindo...</div>
         </div>
         <div class="column right-column">
             <h2 class="titulo-secundario">Texto traduzido</h2>
-            <div class="texto-traduzido" id="traduzindo" contenteditable="false">
+            <div class="texto-traduzido" id="traduzindo" contenteditable="false"
+                 hx-on="htmx:afterSwap" hx-trigger="htmx:afterRequest:saveTranslation">
                 <img class="htmx-indicator blinking" id="processando"
                 src="/static/img/robo_esperando.webp" style="max-width: 80;" />
             </div>
@@ -43,6 +44,5 @@
         <h2 class="titulo-principal">Histórico de Traduções</h2>
         <div id="historico" class="column right-column"></div>
     </div>
-
 </body>
 </html>

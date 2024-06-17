@@ -3,7 +3,7 @@ let historico = [];
 function copyToClipboard() {
     const traduzido = document.getElementById("traduzindo").innerText;
     navigator.clipboard.writeText(traduzido).then(() => {
-        alert("Tradução copiada para a área de transferência.");
+        alert("Tradução copiada para a área de transferência!");
     }).catch(err => {
         console.error("Erro ao copiar: ", err);
     });
@@ -34,8 +34,8 @@ function updateHistorico() {
     });
 }
 
-document.addEventListener("htmx:afterRequest", function(event) {
-    if (event.detail.elt && event.detail.elt.id === "traduzindo") {
+document.body.addEventListener('htmx:afterSwap', (event) => {
+    if (event.target.id === "traduzindo") {
         saveTranslation();
     }
 });
