@@ -1,7 +1,7 @@
 /* styles.css */
 
 body {
-  overflow: auto;
+  overflow: hidden;
 }
 
 .logo {
@@ -91,7 +91,9 @@ textarea {
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container-colunas {
@@ -99,7 +101,9 @@ textarea {
   margin-top: 25px;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .column {
@@ -129,7 +133,33 @@ textarea {
   white-space: pre-wrap;
 }
 
+.button {
+  background-color: #505050; /* Cor de fundo */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: white; /* Cor do texto */
+  text-align: center; /* Alinhamento do texto */
+  display: inline-block; /* Alinhamento inline */
+  font-family: 'Inter', sans-serif;
+  font-size: 16px; /* Tamanho da fonte */
+  padding: 10px 20px; /* Espaçamento interno */
+  margin: 10px auto; /* Margem ajustada para centralizar */
+  cursor: pointer; /* Cursor ao passar o mouse */
+  box-sizing: border-box; /* Incluir padding e border no tamanho total */
+  width: auto; /* Largura automática */
+  transition: background-color 0.3s ease; /* Transição suave para mudança de cor */
+}
 
+.button:hover {
+  background-color: #8700bd; /* Cor de fundo ao passar o mouse */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
   
 .htmx-indicator{
   position: absolute;

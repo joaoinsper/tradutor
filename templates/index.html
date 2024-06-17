@@ -4,22 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tradutor Insper</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
     <link rel="stylesheet" href="/static/css/styles.css">
     <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+    <script src="/static/js/scripts.js" defer></script>
 </head>
 <body>
     <div class="container">
-    <img src="/static/img/logo.png" alt="Logo Insper" class="logo">
-    <h2 class="titulo-principal">Tradutor Insper</h2>
+        <img src="/static/img/logo.png" alt="Logo Insper" class="logo">
+        <h2 class="titulo-principal">Tradutor Insper</h2>
     </div>
     <p class="texto-cabecalho">Seja bem-vindo ao tradutor interno do Insper. Aqui, você poderá traduzir os seus textos de acordo com o glossário da área Internacional.</p>
     <div class="container-colunas">
         <div class="column left-column">
             <h2 class="titulo-secundario">Texto original</h2>
-            <textarea id="texto_a_traduzir" name="texto_a_traduzir" rows="4" cols="50" placeholder="Digite o texto a ser traduzido aqui. Lembre-se de colocar um texto em português."></textarea>
+            <textarea id="texto_a_traduzir" name="texto_a_traduzir" rows="4" cols="50" placeholder="Digite o texto a ser traduzido aqui. Lembre-se de colocar um texto em português." oninput="updateCharCount()"></textarea>
+            <div id="char_count">Caracteres: 0</div>
             <br>
-            <button hx-post="{{url_for('tradutor')}}" hx-target="#traduzindo" hx-swap="innerHTML"
-                    hx-indicator="#processando" hx-include="#texto_a_traduzir">Traduzir</button>
+            <div class="button-container">
+                <button class="button" hx-post="{{url_for('tradutor')}}" hx-target="#traduzindo" hx-swap="innerHTML"
+                        hx-indicator="#processando" hx-include="#texto_a_traduzir">Traduzir</button>
+            </div>
             <div id="processando" style="display: none;">Traduzindo...</div>
         </div>
         <div class="column right-column">
@@ -27,6 +32,10 @@
             <div class="texto-traduzido" id="traduzindo" contenteditable="false">
                 <img class="htmx-indicator blinking" id="processando"
                 src="/static/img/robo_esperando.webp" style="max-width: 80;" />
+            </div>
+            <br>
+            <div class="button-container">
+                <button class="button" onclick="copyToClipboard()">Copiar tradução</button>
             </div>
         </div>
     </div>
