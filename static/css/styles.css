@@ -182,3 +182,37 @@ textarea {
 .blinking {
     animation: blinker 1s linear infinite;
 }
+
+nav {
+  background: Lavender;
+  width: 240px;
+  padding: 12px;
+  border-radius: 12px;
+  position: fixed;
+  top: 10px;
+  right: 1px;
+  clip-path: circle(31px at 48px 48px);
+  transition: all 1s;
+}
+nav.ativa {
+  clip-path: circle(360px at 48px 48px);
+}
+nav a {
+  text-decoration: none;
+  font-size: 36px;
+}
+nav a:hover {
+  color: DeepPink;
+}
+
+button img {
+  width: 48px;
+  aspect-ratio: 1;
+  padding: 5px;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 12px;
+}

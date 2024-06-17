@@ -13,3 +13,9 @@ function updateCharCount() {
     const texto = document.getElementById("texto_a_traduzir").value;
     document.getElementById("char_count").innerText = "Caracteres: " + texto.length;
 }
+
+function toggleMenu() {
+    navegacao.classList.toggle("ativa");
+  }
+  
+  lanche.onclick = toggleMenu;
