@@ -29,7 +29,14 @@ function updateRecentTranslationsList() {
     });
 }
 
+// Função para mostrar a tradução completa em uma caixa branca
 function showFullTranslation(translation) {
+    // Fechar qualquer caixa de tradução completa existente
+    const existingFullTranslationBox = document.querySelector('.full-translation-box');
+    if (existingFullTranslationBox) {
+        document.body.removeChild(existingFullTranslationBox);
+    }
+
     const fullTranslationBox = document.createElement('div');
     fullTranslationBox.className = 'full-translation-box';
     fullTranslationBox.innerHTML = `
@@ -39,11 +46,12 @@ function showFullTranslation(translation) {
         </div>
     `;
     document.body.appendChild(fullTranslationBox);
+
+    // Adicionar evento de clique ao X para fechar a caixa
     document.querySelector('.close-full-translation').addEventListener('click', () => {
         document.body.removeChild(fullTranslationBox);
     });
 }
-
 
 // Função para alternar a visibilidade do menu de traduções recentes
 function toggleRecentTranslations() {
