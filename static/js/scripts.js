@@ -33,7 +33,7 @@ function toggleDarkMode() {
     });
     document.querySelector('.titulo-principal').classList.toggle('dark-mode');
     document.querySelector('.texto-cabecalho').classList.toggle('dark-mode');
-        
+    
     // Alternar ícone
     const icon = document.querySelector('.dark-mode-toggle-container i');
     if (document.body.classList.contains('dark-mode')) {
@@ -45,4 +45,40 @@ function toggleDarkMode() {
     }
 }
 
+let recentTranslations = JSON.parse(localStorage.getItem('recentTranslations')) || [];
 
+function saveTranslation() {
+    const traduzido = document.getElementById("traduzindo").innerText;
+    if (traduzido) {
+        recentTranslations.push(traduzido);
+        localStorage.setItem('recentTranslations', JSON.stringify(recentTranslations));
+        updateRecentTranslationsList();
+    }
+}
+
+function updateRecentTranslationsList() {
+    const list = document.getElementById('recent-translations-list');
+    list.innerHTML = '';
+    recentTranslations.forEach((translation, index) => {
+        const listItem = document.createElement('li');
+        const translationLink = document.createElement('a');
+        translationLink.href = '#';
+        translationLink.innerText = `Tradução ${index + 1}`;
+        translationLink.addEventListener('click', () => {
+            document.getElementById('traduzindo').innerText = translation;
+        });
+        listItem.appendChild(translationLink);
+        list.appendChild(listItem);
+    });
+}
+
+function toggleRecentTranslations() {
+    const menu = document.getElementById('recent-translations-menu');
+    menu.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateRecentTranslationsList();
+    // Modifique a função de tradução para salvar a tradução recente
+    document.querySelector('button[onclick="saveTranslation()"]').addEventListener('click', saveTranslation);
+});

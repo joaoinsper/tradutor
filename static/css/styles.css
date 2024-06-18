@@ -202,6 +202,11 @@ textarea {
 
 
 /* Modo Escuro */
+
+body.dark-mode .logo {
+  content: url('/static/img/logo-escuro.png');
+}
+
 body.dark-mode {
   background-color: #121212;
   color: #e0e0e0;
@@ -273,4 +278,83 @@ body.dark-mode .footer {
 body.dark-mode .footer a {
   color: #ffffff; /* Cor do texto do link no modo escuro */
   text-decoration: underline; /* Mantém o sublinhado para diferenciar os links */
+}
+
+.recent-translations-toggle-container {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+}
+
+.recent-translations-toggle-container i {
+  font-size: 24px;
+  cursor: pointer;
+  color: #505050; /* Cor do ícone no modo claro */
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .recent-translations-toggle-container i {
+  color: #e0e0e0; /* Cor do ícone no modo escuro */
+}
+
+.recent-translations-menu {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Escondido fora da tela */
+  width: 250px;
+  height: 100%;
+  background-color: #f1f1f1;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  padding: 20px;
+  transition: right 0.3s;
+  overflow-y: auto;
+}
+
+body.dark-mode .recent-translations-menu {
+  background-color: #333333;
+  color: #e0e0e0;
+}
+
+.recent-translations-menu h3 {
+  margin-top: 0;
+}
+
+.recent-translations-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.recent-translations-menu ul li {
+  margin-bottom: 10px;
+}
+
+.recent-translations-menu ul li a {
+  text-decoration: none;
+  color: #333333;
+}
+
+body.dark-mode .recent-translations-menu ul li a {
+  color: #e0e0e0;
+}
+
+.recent-translations-menu.open {
+  right: 0;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-menu {
+  font-size: 24px;
+  cursor: pointer;
+  color: #505050; /* Cor do ícone no modo claro */
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+body.dark-mode .close-menu {
+  color: #e0e0e0; /* Cor do ícone no modo escuro */
 }

@@ -14,11 +14,21 @@
     <div class="dark-mode-toggle-container">
         <i class="fas fa-moon" onclick="toggleDarkMode()"></i>
     </div>
+    <div class="recent-translations-toggle-container">
+        <i class="fas fa-history" onclick="toggleRecentTranslations()"></i>
+    </div>
+    <div id="recent-translations-menu" class="recent-translations-menu">
+        <div class="menu-header">
+            <h3>Traduções Recentes</h3>
+            <i class="fas fa-arrow-left close-menu" onclick="toggleRecentTranslations()"></i>
+        </div>
+        <ul id="recent-translations-list"></ul>
+    </div>
     <div class="container">
         <img src="/static/img/logo.png" alt="Logo Insper" class="logo">
         <h2 class="titulo-principal">Tradutor Insper</h2>
     </div>
-    <p class="texto-cabecalho">Seja bem-vindo ao tradutor interno do Insper. Aqui, você poderá traduzir os seus textos de acordo com os termos adotados pela escola.</p>
+    <p class="texto-cabecalho">Seja bem-vindo ao tradutor interno do Insper. Aqui, você poderá traduzir os seus textos de acordo com o glossário da área Internacional.</p>
     <div class="container-colunas">
         <div class="column left-column">
             <h2 class="titulo-secundario">Texto original</h2>
