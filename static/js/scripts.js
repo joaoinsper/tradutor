@@ -11,7 +11,7 @@ function showLoadingIndicator() {
 // Função para salvar a tradução atual no Local Storage
 function saveTranslation() {
     const traduzido = document.getElementById("traduzindo").innerText;
-    if (traduzido) {
+    if (traduzido && !recentTranslations.includes(traduzido)) {
         recentTranslations.push(traduzido);
         localStorage.setItem('recentTranslations', JSON.stringify(recentTranslations));
         updateRecentTranslationsList();
@@ -88,4 +88,5 @@ function updateCharCount() {
 // Inicializa a lista de traduções recentes ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     updateRecentTranslationsList();
+    document.querySelector('button[onclick="showLoadingIndicator()"]').addEventListener('click', showLoadingIndicator);
 });
