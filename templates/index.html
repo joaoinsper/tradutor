@@ -45,9 +45,8 @@
         </div>
         <div class="column right-column">
             <h2 class="titulo-secundario">Texto traduzido</h2>
-            <div class="texto-traduzido" id="traduzindo" contenteditable="false">
-                <img class="htmx-indicator blinking" id="processando"
-                src="/static/img/robo_esperando.webp" style="max-width: 80;" />
+            <div class="texto-traduzido" id="traduzindo" contenteditable="false" hx-on="htmx:afterSwap:saveTranslation">
+                <img class="htmx-indicator blinking" id="processando" src="/static/img/robo_esperando.webp" style="max-width: 80;" />
             </div>
             <br>
             <div class="button-container">

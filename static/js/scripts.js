@@ -75,6 +75,6 @@ function updateCharCount() {
 // Inicializa a lista de traduções recentes ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     updateRecentTranslationsList();
-    // Adicionar evento de clique ao botão de tradução para salvar a tradução recente
-    document.querySelector('button[onclick="saveTranslation()"]').addEventListener('click', saveTranslation);
+    // Registrar o evento htmx:afterSwap para salvar a tradução recente
+    document.getElementById('traduzindo').addEventListener('htmx:afterSwap', saveTranslation);
 });
