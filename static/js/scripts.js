@@ -1,5 +1,10 @@
-// Variável para armazenar traduções recentes
-let recentTranslations = JSON.parse(localStorage.getItem('recentTranslations')) || [];
+// Função para adicionar o robô piscando ao contêiner #traduzindo
+function showLoadingIndicator() {
+    const translatingContainer = document.getElementById("traduzindo");
+    translatingContainer.innerHTML = `
+        <img class="htmx-indicator blinking" id="processando" src="/static/img/robo_esperando.webp" style="max-width: 80px;" />
+    `;
+}
 
 // Função para salvar a tradução atual no Local Storage
 function saveTranslation() {
@@ -31,10 +36,10 @@ function updateRecentTranslationsList() {
 
 // Função para mostrar a tradução completa em uma caixa branca
 function showFullTranslation(translation) {
-    // Fechar qualquer caixa de tradução completa existente
-    const existingFullTranslationBox = document.querySelector('.full-translation-box');
-    if (existingFullTranslationBox) {
-        document.body.removeChild(existingFullTranslationBox);
+    // Fechar qualquer caixa de tradução aberta
+    const existingBox = document.querySelector('.full-translation-box');
+    if (existingBox) {
+        document.body.removeChild(existingBox);
     }
 
     const fullTranslationBox = document.createElement('div');
@@ -46,8 +51,6 @@ function showFullTranslation(translation) {
         </div>
     `;
     document.body.appendChild(fullTranslationBox);
-
-    // Adicionar evento de clique ao X para fechar a caixa
     document.querySelector('.close-full-translation').addEventListener('click', () => {
         document.body.removeChild(fullTranslationBox);
     });
@@ -83,6 +86,8 @@ function updateCharCount() {
 // Inicializa a lista de traduções recentes ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     updateRecentTranslationsList();
-    // Registrar o evento htmx:afterSwap para salvar a tradução recente
-    document.getElementById('traduzindo').addEventListener('htmx:afterSwap', saveTranslation);
+    // Adicionar evento de clique ao botão de tradução para salvar a tradução recente
+    document.querySelector('button[onclick="saveTranslation()"]').addEventListener('click', saveTranslation);
+    // Adicionar evento de clique ao botão de tradução para mostrar o indicador de carregamento
+    document.querySelector('button[onclick="saveTranslation()"]').addEventListener('click', showLoadingIndicator);
 });
