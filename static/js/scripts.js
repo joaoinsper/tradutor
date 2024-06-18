@@ -1,27 +1,17 @@
+// Variável para armazenar traduções recentes
 let recentTranslations = JSON.parse(localStorage.getItem('recentTranslations')) || [];
-console.log("Initial recentTranslations:", recentTranslations);
 
-function showLoadingIndicator() {
-    const translatingContainer = document.getElementById("traduzindo");
-    translatingContainer.innerHTML = `
-        <img class="htmx-indicator blinking" id="processando" src="/static/img/robo_esperando.webp" style="max-width: 80px;" />
-    `;
-    console.log("Loading indicator shown");
-}
-
+// Função para salvar a tradução atual no Local Storage
 function saveTranslation() {
     const traduzido = document.getElementById("traduzindo").innerText;
-    console.log("Texto traduzido:", traduzido);
-    if (traduzido && !recentTranslations.includes(traduzido)) {
+    if (traduzido) {
         recentTranslations.push(traduzido);
         localStorage.setItem('recentTranslations', JSON.stringify(recentTranslations));
         updateRecentTranslationsList();
-        console.log("Translation saved:", traduzido);
-    } else {
-        console.log("Translation not saved, either empty or already exists.");
     }
 }
 
+// Função para atualizar a lista de traduções recentes no menu lateral
 function updateRecentTranslationsList() {
     const list = document.getElementById('recent-translations-list');
     list.innerHTML = '';
@@ -37,13 +27,14 @@ function updateRecentTranslationsList() {
         listItem.appendChild(translationLink);
         list.appendChild(listItem);
     });
-    console.log("Recent translations list updated:", recentTranslations);
 }
 
+// Função para mostrar a tradução completa em uma caixa branca
 function showFullTranslation(translation) {
-    const existingBox = document.querySelector('.full-translation-box');
-    if (existingBox) {
-        document.body.removeChild(existingBox);
+    // Fechar qualquer caixa de tradução completa existente
+    const existingFullTranslationBox = document.querySelector('.full-translation-box');
+    if (existingFullTranslationBox) {
+        document.body.removeChild(existingFullTranslationBox);
     }
 
     const fullTranslationBox = document.createElement('div');
@@ -55,40 +46,43 @@ function showFullTranslation(translation) {
         </div>
     `;
     document.body.appendChild(fullTranslationBox);
+
+    // Adicionar evento de clique ao X para fechar a caixa
     document.querySelector('.close-full-translation').addEventListener('click', () => {
         document.body.removeChild(fullTranslationBox);
     });
-    console.log("Full translation shown:", translation);
 }
 
+// Função para alternar a visibilidade do menu de traduções recentes
 function toggleRecentTranslations() {
     const menu = document.getElementById('recent-translations-menu');
     menu.classList.toggle('open');
-    console.log("Toggled recent translations menu");
 }
 
+// Função para alternar entre modo claro e escuro
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
-    console.log("Toggled dark mode");
 }
 
+// Função para copiar a tradução para a área de transferência
 function copyToClipboard() {
     const traduzido = document.getElementById("traduzindo").innerText;
     navigator.clipboard.writeText(traduzido).then(() => {
         alert("Tradução copiada para a área de transferência!");
-        console.log("Copied to clipboard:", traduzido);
     }).catch(err => {
-        console.error("Erro ao copiar:", err);
+        console.error("Erro ao copiar: ", err);
     });
 }
 
+// Função para atualizar a contagem de caracteres
 function updateCharCount() {
     const texto = document.getElementById("texto_a_traduzir").value;
     document.getElementById("char_count").innerText = "Caracteres: " + texto.length;
-    console.log("Character count updated:", texto.length);
 }
 
+// Inicializa a lista de traduções recentes ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     updateRecentTranslationsList();
-    console.log("Page loaded, recent translations list updated");
+    // Registrar o evento htmx:afterSwap para salvar a tradução recente
+    document.getElementById('traduzindo').addEventListener('htmx:afterSwap', saveTranslation);
 });

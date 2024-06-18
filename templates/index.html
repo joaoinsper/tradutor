@@ -36,7 +36,8 @@
             <div id="char_count">Caracteres: 0</div>
             <br>
             <div class="button-container">
-                <button class="button" hx-post="{{url_for('tradutor')}}" hx-target="#traduzindo" hx-swap="innerHTML" hx-indicator="#processando" hx-include="#texto_a_traduzir" onclick="showLoadingIndicator();">
+                <button class="button" hx-post="{{url_for('tradutor')}}" hx-target="#traduzindo" hx-swap="innerHTML"
+                        hx-indicator="#processando" hx-include="#texto_a_traduzir">
                     <i class="fas fa-language"></i> <span>Traduzir</span>
                 </button>
             </div>
