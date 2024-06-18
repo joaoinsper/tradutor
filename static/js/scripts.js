@@ -88,5 +88,6 @@ function updateCharCount() {
 // Inicializa a lista de traduções recentes ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     updateRecentTranslationsList();
-    document.querySelector('button[onclick="showLoadingIndicator()"]').addEventListener('click', showLoadingIndicator);
+    const translateButton = document.querySelector('.button[onclick="showLoadingIndicator()"]');
+    translateButton.addEventListener('click', showLoadingIndicator);
 });
