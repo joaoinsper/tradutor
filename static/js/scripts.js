@@ -1,7 +1,6 @@
 let recentTranslations = JSON.parse(localStorage.getItem('recentTranslations')) || [];
 console.log("Initial recentTranslations:", recentTranslations);
 
-// Função para adicionar o robô piscando ao contêiner #traduzindo
 function showLoadingIndicator() {
     const translatingContainer = document.getElementById("traduzindo");
     translatingContainer.innerHTML = `
@@ -10,7 +9,6 @@ function showLoadingIndicator() {
     console.log("Loading indicator shown");
 }
 
-// Função para salvar a tradução atual no Local Storage
 function saveTranslation() {
     const traduzido = document.getElementById("traduzindo").innerText;
     console.log("Texto traduzido:", traduzido);
@@ -19,10 +17,11 @@ function saveTranslation() {
         localStorage.setItem('recentTranslations', JSON.stringify(recentTranslations));
         updateRecentTranslationsList();
         console.log("Translation saved:", traduzido);
+    } else {
+        console.log("Translation not saved, either empty or already exists.");
     }
 }
 
-// Função para atualizar a lista de traduções recentes no menu lateral
 function updateRecentTranslationsList() {
     const list = document.getElementById('recent-translations-list');
     list.innerHTML = '';
@@ -41,9 +40,7 @@ function updateRecentTranslationsList() {
     console.log("Recent translations list updated:", recentTranslations);
 }
 
-// Função para mostrar a tradução completa em uma caixa branca
 function showFullTranslation(translation) {
-    // Fechar qualquer caixa de tradução aberta
     const existingBox = document.querySelector('.full-translation-box');
     if (existingBox) {
         document.body.removeChild(existingBox);
@@ -64,20 +61,17 @@ function showFullTranslation(translation) {
     console.log("Full translation shown:", translation);
 }
 
-// Função para alternar a visibilidade do menu de traduções recentes
 function toggleRecentTranslations() {
     const menu = document.getElementById('recent-translations-menu');
     menu.classList.toggle('open');
     console.log("Toggled recent translations menu");
 }
 
-// Função para alternar entre modo claro e escuro
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     console.log("Toggled dark mode");
 }
 
-// Função para copiar a tradução para a área de transferência
 function copyToClipboard() {
     const traduzido = document.getElementById("traduzindo").innerText;
     navigator.clipboard.writeText(traduzido).then(() => {
@@ -88,14 +82,12 @@ function copyToClipboard() {
     });
 }
 
-// Função para atualizar a contagem de caracteres
 function updateCharCount() {
     const texto = document.getElementById("texto_a_traduzir").value;
     document.getElementById("char_count").innerText = "Caracteres: " + texto.length;
     console.log("Character count updated:", texto.length);
 }
 
-// Inicializa a lista de traduções recentes ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     updateRecentTranslationsList();
     console.log("Page loaded, recent translations list updated");
