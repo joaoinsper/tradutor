@@ -1,4 +1,5 @@
 let recentTranslations = JSON.parse(localStorage.getItem('recentTranslations')) || [];
+console.log("Initial recentTranslations:", recentTranslations);
 
 // Função para adicionar o robô piscando ao contêiner #traduzindo
 function showLoadingIndicator() {
@@ -6,15 +7,18 @@ function showLoadingIndicator() {
     translatingContainer.innerHTML = `
         <img class="htmx-indicator blinking" id="processando" src="/static/img/robo_esperando.webp" style="max-width: 80px;" />
     `;
+    console.log("Loading indicator shown");
 }
 
 // Função para salvar a tradução atual no Local Storage
 function saveTranslation() {
     const traduzido = document.getElementById("traduzindo").innerText;
+    console.log("Texto traduzido:", traduzido);
     if (traduzido && !recentTranslations.includes(traduzido)) {
         recentTranslations.push(traduzido);
         localStorage.setItem('recentTranslations', JSON.stringify(recentTranslations));
         updateRecentTranslationsList();
+        console.log("Translation saved:", traduzido);
     }
 }
 
@@ -34,6 +38,7 @@ function updateRecentTranslationsList() {
         listItem.appendChild(translationLink);
         list.appendChild(listItem);
     });
+    console.log("Recent translations list updated:", recentTranslations);
 }
 
 // Função para mostrar a tradução completa em uma caixa branca
@@ -56,17 +61,20 @@ function showFullTranslation(translation) {
     document.querySelector('.close-full-translation').addEventListener('click', () => {
         document.body.removeChild(fullTranslationBox);
     });
+    console.log("Full translation shown:", translation);
 }
 
 // Função para alternar a visibilidade do menu de traduções recentes
 function toggleRecentTranslations() {
     const menu = document.getElementById('recent-translations-menu');
     menu.classList.toggle('open');
+    console.log("Toggled recent translations menu");
 }
 
 // Função para alternar entre modo claro e escuro
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
+    console.log("Toggled dark mode");
 }
 
 // Função para copiar a tradução para a área de transferência
@@ -74,8 +82,9 @@ function copyToClipboard() {
     const traduzido = document.getElementById("traduzindo").innerText;
     navigator.clipboard.writeText(traduzido).then(() => {
         alert("Tradução copiada para a área de transferência!");
+        console.log("Copied to clipboard:", traduzido);
     }).catch(err => {
-        console.error("Erro ao copiar: ", err);
+        console.error("Erro ao copiar:", err);
     });
 }
 
@@ -83,11 +92,11 @@ function copyToClipboard() {
 function updateCharCount() {
     const texto = document.getElementById("texto_a_traduzir").value;
     document.getElementById("char_count").innerText = "Caracteres: " + texto.length;
+    console.log("Character count updated:", texto.length);
 }
 
 // Inicializa a lista de traduções recentes ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     updateRecentTranslationsList();
-    // Adicionar evento de clique ao botão de tradução para mostrar o indicador de carregamento
-    document.querySelector('.button[onclick="showLoadingIndicator()"]').addEventListener('click', showLoadingIndicator);
+    console.log("Page loaded, recent translations list updated");
 });
