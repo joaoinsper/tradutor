@@ -1,10 +1,10 @@
 body {
-  overflow: auto;
+  overflow: hidden;
 }
 
 .logo {
   top: 0;
-  left: 0;
+  margin-left: 40px;
   max-width: 110px; /* Defina a largura máxima desejada para a logo */
   height: auto; /* Permite que a altura seja ajustada automaticamente */
   margin-bottom: 0px;
@@ -12,7 +12,7 @@ body {
 
 .titulo-principal {
   font-family: 'GT Ultra Fine Black', sans-serif;
-  font-size: 40px;
+  font-size: 36px;
   color: #333333;
   margin-bottom: 0;
   margin-top: 0;
@@ -31,7 +31,8 @@ body {
 
 .texto-cabecalho {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
+  margin-top: 0;
   color: #000000;
 }
 
@@ -50,7 +51,7 @@ body {
   max-height: 400px;
   padding: 10px;
   margin-top: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 3px;
   resize: vertical;
   box-sizing: border-box;
@@ -68,7 +69,7 @@ textarea {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #352f2f;
   border-radius: 3px;
   resize: vertical;
   box-sizing: border-box; /* Inclui padding e border no cálculo da largura total */
@@ -80,7 +81,6 @@ textarea {
 
 #traduzindo p {
   white-space: pre-wrap;
-  /* Outras propriedades de estilo aqui, se necessário */
 }
 
 .container {
@@ -95,10 +95,10 @@ textarea {
 
 .container-colunas {
   display: flex;
-  margin-top: 25px;
+  margin-top: 20px;
   flex-direction: row;
   justify-content: space-between;
-  width: 90%;
+  width: 85%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -131,29 +131,39 @@ textarea {
 }
 
 .button {
-  background-color: #505050; /* Cor de fundo */
-  border: 1px solid #ccc;
+  background-color: #ffffff; /* Cor de fundo */
+  border: 1px solid #000000;
   border-radius: 5px;
-  color: white; /* Cor do texto */
-  text-align: center; /* Alinhamento do texto */
-  display: inline-block; /* Alinhamento inline */
+  color: rgb(0, 0, 0); /* Cor do texto */
+  display: inline-flex; /* Alinhamento inline */
   font-family: 'Inter', sans-serif;
   font-size: 16px; /* Tamanho da fonte */
-  padding: 10px 20px; /* Espaçamento interno */
+  padding: 10px 12px; /* Espaçamento interno */
   margin: 10px auto; /* Margem ajustada para centralizar */
   cursor: pointer; /* Cursor ao passar o mouse */
   transition: background-color 0.3s ease; /* Transição suave para mudança de cor */
+  line-height: 1; /* Garantir que a altura da linha seja igual à altura do conteúdo */
+}
+
+.button i {
+  margin-right: 8px; /* Espaçamento entre o ícone e o texto */
+  display: inline-flex;
+  align-items: center; /* Alinhar ícone ao centro verticalmente */
+}
+
+.button span {
+  vertical-align: middle; /* Alinhar texto ao meio */
 }
 
 .button:hover {
-  background-color: #8700bd; /* Cor de fundo ao passar o mouse */
+  background-color: #b6b6b6; /* Cor de fundo ao passar o mouse */
 }
 
 .button-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 0;
 }
 
 .htmx-indicator {
@@ -180,6 +190,17 @@ textarea {
   animation: blinker 1s linear infinite;
 }
 
+
+.footer {
+  background-color: #ffffff; /* Cor de fundo do footer */
+  padding: 10px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #000000;
+}
+
+
 /* Modo Escuro */
 body.dark-mode {
   background-color: #121212;
@@ -189,16 +210,19 @@ body.dark-mode {
 .left-column.dark-mode {
   background-color: #333333;
   color: #e0e0e0;
+  border: 1px solid #ffffff;
 }
 
 .right-column.dark-mode {
-  background-color: #444444;
+  background-color: #333333;
   color: #e0e0e0;
+  border: 1px solid #ffffff;
 }
 
 .texto-traduzido.dark-mode {
-  background-color: #222222;
+  background-color: #333333;
   color: #e0e0e0;
+  border: 1px solid #555555;
 }
 
 textarea.dark-mode {
@@ -206,10 +230,20 @@ textarea.dark-mode {
   color: #e0e0e0;
   border: 1px solid #555555;
 }
+
+.button.dark-mode {
+  background-color: #000000;
+  color: white;
+}
+
+.button.dark-mode:hover {
+  background-color: #312c2c;
+}
+
 .dark-mode-toggle-container {
   position: absolute;
-  top: 10px;
-  right: 77px;
+  top: 12px;
+  right: 120px;
 }
 
 .dark-mode-toggle-container i {
@@ -220,13 +254,23 @@ textarea.dark-mode {
 }
 
 body.dark-mode .dark-mode-toggle-container i {
-  color: #e0e0e0; /* Cor do ícone no modo escuro */
+  color: #ffd000; /* Cor do ícone no modo escuro */
 }
 
-.titulo-principal.dark-mode {
+body.dark-mode .titulo-principal, .texto-cabecalho {
   color: #ffffff;
 }
 
-.texto-cabecalho.dark-mode {
+body.dark-mode .footer {
+  background-color: #121212;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
   color: #ffffff;
+}
+
+body.dark-mode .footer a {
+  color: #ffffff; /* Cor do texto do link no modo escuro */
+  text-decoration: underline; /* Mantém o sublinhado para diferenciar os links */
 }

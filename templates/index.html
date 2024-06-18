@@ -18,7 +18,7 @@
         <img src="/static/img/logo.png" alt="Logo Insper" class="logo">
         <h2 class="titulo-principal">Tradutor Insper</h2>
     </div>
-    <p class="texto-cabecalho">Seja bem-vindo ao tradutor interno do Insper. Aqui, você poderá traduzir os seus textos de acordo com o glossário da área Internacional.</p>
+    <p class="texto-cabecalho">Seja bem-vindo ao tradutor interno do Insper. Aqui, você poderá traduzir os seus textos de acordo com os termos adotados pela escola.</p>
     <div class="container-colunas">
         <div class="column left-column">
             <h2 class="titulo-secundario">Texto original</h2>
@@ -27,21 +27,28 @@
             <br>
             <div class="button-container">
                 <button class="button" hx-post="{{url_for('tradutor')}}" hx-target="#traduzindo" hx-swap="innerHTML"
-                        hx-indicator="#processando" hx-include="#texto_a_traduzir">Traduzir</button>
+                        hx-indicator="#processando" hx-include="#texto_a_traduzir">
+                    <i class="fas fa-language"></i> <span>Traduzir</span>
+                </button>
             </div>
             <div id="processando" style="display: none;">Traduzindo...</div>
         </div>
         <div class="column right-column">
             <h2 class="titulo-secundario">Texto traduzido</h2>
-            <div class="texto-traduzido" id="traduzindo" contenteditable="false"
-                 hx-on="htmx:afterSwap" hx-trigger="htmx:afterRequest:saveTranslation">
+            <div class="texto-traduzido" id="traduzindo" contenteditable="false">
                 <img class="htmx-indicator blinking" id="processando"
                 src="/static/img/robo_esperando.webp" style="max-width: 80;" />
             </div>
             <br>
             <div class="button-container">
-                <button class="button" onclick="copyToClipboard()">Copiar tradução</button>
+                <button class="button" onclick="copyToClipboard()">
+                    <i class="fas fa-copy"></i> <span>Copiar tradução</span>
+                </button>
             </div>
         </div>
+    </div>
+    <footer class="footer">
+        Ficou com dúvidas ou encontrou algum bug? Escreva para João Barbosa (<a href="mailto:joaovsb2@insper.edu.br">joaovsb2@insper.edu.br</a>).
+    </footer>
 </body>
 </html>
