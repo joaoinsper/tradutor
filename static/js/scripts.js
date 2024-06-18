@@ -1,3 +1,5 @@
+let recentTranslations = JSON.parse(localStorage.getItem('recentTranslations')) || [];
+
 // Função para adicionar o robô piscando ao contêiner #traduzindo
 function showLoadingIndicator() {
     const translatingContainer = document.getElementById("traduzindo");
