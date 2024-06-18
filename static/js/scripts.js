@@ -1,5 +1,3 @@
-let historico = [];
-
 function copyToClipboard() {
     const traduzido = document.getElementById("traduzindo").innerText;
     navigator.clipboard.writeText(traduzido).then(() => {
@@ -14,8 +12,37 @@ function updateCharCount() {
     document.getElementById("char_count").innerText = "Caracteres: " + texto.length;
 }
 
-function toggleMenu() {
-    navegacao.classList.toggle("ativa");
-  }
-  
-  lanche.onclick = toggleMenu;
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle('light-mode');
+    document.querySelectorAll('.column').forEach((column) => {
+        column.classList.toggle('dark-mode');
+        column.classList.toggle('light-mode');
+    });
+    document.querySelectorAll('.texto-traduzido').forEach((texto) => {
+        texto.classList.toggle('dark-mode');
+        texto.classList.toggle('light-mode');
+    });
+    document.querySelectorAll('textarea').forEach((textarea) => {
+        textarea.classList.toggle('dark-mode');
+        textarea.classList.toggle('light-mode');
+    });
+    document.querySelectorAll('.button').forEach((button) => {
+        button.classList.toggle('dark-mode');
+        button.classList.toggle('light-mode');
+    });
+    document.querySelector('.titulo-principal').classList.toggle('dark-mode');
+    document.querySelector('.texto-cabecalho').classList.toggle('dark-mode');
+        
+    // Alternar ícone
+    const icon = document.querySelector('.dark-mode-toggle-container i');
+    if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+}
+
+
