@@ -29,7 +29,6 @@ function updateRecentTranslationsList() {
     });
 }
 
-// Função para mostrar a tradução completa em uma caixa branca
 function showFullTranslation(translation) {
     const fullTranslationBox = document.createElement('div');
     fullTranslationBox.className = 'full-translation-box';
@@ -44,6 +43,7 @@ function showFullTranslation(translation) {
         document.body.removeChild(fullTranslationBox);
     });
 }
+
 
 // Função para alternar a visibilidade do menu de traduções recentes
 function toggleRecentTranslations() {

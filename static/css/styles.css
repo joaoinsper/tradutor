@@ -384,4 +384,5 @@ body.dark-mode .close-menu {
   right: 10px;
   font-size: 24px;
   cursor: pointer;
+  color: #333; /* Cor do ícone de fechar */
 }
