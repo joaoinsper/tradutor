@@ -42,8 +42,7 @@
             <br>
             <div class="button-container">
                 <button class="button" hx-post="{{url_for('tradutor')}}" hx-target="#traduzindo" hx-swap="innerHTML"
-                    hx-indicator="#processando" hx-include="#texto_a_traduzir"
-                    onclick="saveTranslation(); showLoadingIndicator();">
+                    hx-indicator="#processando" hx-include="#texto_a_traduzir" onclick="showLoadingIndicator(); saveTranslation();">
                     <i class="fas fa-language"></i> <span>Traduzir</span>
                 </button>
             </div>
@@ -51,9 +50,9 @@
         </div>
         <div class="column right-column">
             <h2 class="titulo-secundario">Texto traduzido</h2>
-            <div class="texto-traduzido" id="traduzindo" contenteditable="false" hx-on="htmx:afterSwap:saveTranslation">
+            <div class="texto-traduzido" id="traduzindo" contenteditable="false">
                 <img class="htmx-indicator blinking" id="processando" src="/static/img/robo_esperando.webp"
-                    style="max-width: 80;" />
+                    style="max-width: 80px;" />
             </div>
             <br>
             <div class="button-container">
