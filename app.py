@@ -5,8 +5,22 @@ import os
 from pymongo import MongoClient
 
 load_dotenv(find_dotenv())
-api_key = os.getenv('OPENAI_API_KEY')
-client = OpenAI()
+deployment_name = os.environ['COMPLETIONS_MODEL']
+
+# The API key for your Azure OpenAI resource.
+api_key = os.environ["AZURE_OPENAI_API_KEY"]
+
+# The base URL for your Azure OpenAI resource. e.g. "https://<your resource name>.openai.azure.com"
+azure_endpoint = os.environ['AZURE_OPENAI_ENDPOINT']
+
+# Currently OPENAI API have the following versions available: 2022-12-01
+api_version = os.environ['OPENAI_API_VERSION']
+
+client = AzureOpenAI(
+  api_key=api_key,  
+  azure_endpoint=azure_endpoint,
+  api_version=api_version
+)
 uri = os.getenv('MONGODB_URI')
 db = MongoClient(uri, ssl=True, tlsAllowInvalidCertificates=True)['mjd_2024']
 
