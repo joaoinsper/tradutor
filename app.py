@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from openai import OpenAI
+from openai import AzureOpenAI
 from dotenv import load_dotenv, find_dotenv
 import os
 from pymongo import MongoClient
