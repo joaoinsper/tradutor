@@ -41,8 +41,8 @@ def tradutor():
 
     texto = request.form.get('texto_a_traduzir')
     response = client.chat.completions.create(
-        model="gpt-4-turbo",
-        messages=[
+            model='jjf',
+            messages=[
             {"role": "system", "content": f"Traduza o seguinte texto para inglês, mas considere o valor do\
             dicionário {dicionario_final} como tradução para as palavras que estiverem nas chaves desse mesmo dicionário. Não faça nenhum tipo de interação com o usuário.\
             Apenas traduza o texto que ele inserir."},
